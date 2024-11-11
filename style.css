@@ -1,0 +1,147 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2 {
+    color: white;
+}
+
+h3 {
+    color: gray;
+}
+
+/* Sidebar Styling */
+.sidemenu {
+    position: fixed;
+    width: 20vw;
+    height: 100vh;
+    background: #5d4eeb;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+}
+
+.sidemenu h1 {
+    margin-bottom: 20px;
+}
+
+.sidemenu ul {
+    width: 100%;
+}
+
+.sidemenu ul li {
+    padding: 10px 40px;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidemenu ul li img {
+    width: 24px;
+    margin-right: 10px;
+}
+
+/* Main Content Styling */
+.container {
+    margin-left: 20vw; /* Offset for sidebar */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #f1f1f1;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header .search {
+    display: flex;
+    align-items: center;
+}
+
+.header .search input {
+    padding: 5px;
+    margin-right: 5px;
+    border: none;
+    background: #f1f1f1;
+}
+
+.header .user img {
+    width: 24px;
+    margin-left: 10px;
+}
+
+/* Content Area */
+.content {
+    padding: 20px;
+}
+
+.events-container, .posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.event, .post {
+    width: 100%;
+    max-width: 300px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.event img, .post img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.btn {
+    background: #5d4eeb;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #6d44b8;
+}
