@@ -1,0 +1,99 @@
+<! --profile.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 min-h-screen text-white font-sans p-8">
+    <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold mb-8">Profile Information</h1>
+        <div id="user-info" class="mb-8">
+            <!-- User information will be dynamically inserted here -->
+        </div>
+
+        <h2 class="text-2xl font-bold mb-4">Events Created by You</h2>
+        <div id="created-events" class="space-y-4">
+            <!-- Created events will be dynamically inserted here -->
+        </div>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4">Events You Joined</h2>
+        <div id="joined-events" class="space-y-4">
+            <!-- Joined events will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load user data from local storage
+            const user = JSON.parse(localStorage.getItem('user'));
+
+            // Display user information
+            const userInfoContainer = document.getElementById('user-info');
+            if (user) {
+                userInfoContainer.innerHTML = 
+                    <p><strong>Username:</strong> ${user.username}</p>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                    <p><strong>Telephone:</strong> ${user.telephone}</p>
+                    <p><strong>Address:</strong> ${user.address}</p>
+                ;
+            } else {
+                userInfoContainer.innerHTML = <p>No user information available.</p>;
+            }
+
+            // Load events from local storage
+            const events = JSON.parse(localStorage.getItem('events')) || [];
+
+            // Display created events
+            const createdEventsIds = JSON.parse(localStorage.getItem('createdEvents')) || [];
+            const createdEventsContainer = document.getElementById('created-events');
+            if (createdEventsIds.length > 0) {
+                createdEventsContainer.innerHTML = '';
+                createdEventsIds.forEach(eventId => {
+                    const event = events.find(e => e.id === eventId);
+                    if (event) {
+                        createdEventsContainer.innerHTML += 
+                            <div class="bg-gray-700 p-4 rounded">
+                                <h3 class="text-xl font-bold">${event.name}</h3>
+                                <p>Location: ${event.location}</p>
+                                <p>Date: ${new Date(event.date).toLocaleDateString()}</p>
+                            </div>
+                        ;
+                    }
+                });
+            } else {
+                createdEventsContainer.innerHTML = <p>No events created by you.</p>;
+            }
+
+            // Display joined events
+            const joinedEventsIds = JSON.parse(localStorage.getItem('joinedEvents')) || [];
+            const joinedEventsContainer = document.getElementById('joined-events');
+            if (joinedEventsIds.length > 0) {
+                joinedEventsContainer.innerHTML = '';
+                joinedEventsIds.forEach(eventId => {
+                    const event = events.find(e => e.id === eventId);
+                    if (event) {
+                        joinedEventsContainer.innerHTML += 
+                            <div class="bg-gray-700 p-4 rounded">
+                                <h3 class="text-xl font-bold">${event.name}</h3>
+                                <p>Location: ${event.location}</p>
+                                <p>Date: ${new Date(event.date).toLocaleDateString()}</p>
+                            </div>
+                        ;
+                    }
+                });
+            } else {
+                joinedEventsContainer.innerHTML = <p>No events joined by you.</p>;
+            }
+        });
+    </script>
+</body>
+
+</html>
