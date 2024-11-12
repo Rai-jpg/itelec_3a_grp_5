@@ -1,143 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale="1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>DashboardBrgy</title>
-</head>	
-<body>
-    <div class="sidemenu">
-        <div class="brandname">
-        <H1>Dashboard</H1>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard - Community Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-jost bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 min-h-screen flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 text-white flex flex-col items-center p-4">
+        <h1 class="text-2xl font-bold mb-6">Dashboard</h1>
+        <ul id="menu" class="w-full">
+            <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer" data-section="home">
+                <i class="fas fa-home mr-3"></i>
+                <span>Home</span>
+            </li>
+            <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer" data-section="profile">
+                <i class="fas fa-user mr-3"></i>
+                <span>Profile</span>
+            </li>
+            <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer" data-section="events">
+                <i class="fas fa-calendar-alt mr-3"></i>
+                <span>Events</span>
+            </li>
+            <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer" data-section="admin">
+                <i class="fas fa-users-cog mr-3"></i>
+                <span>Admin</span>
+            </li>
+            <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer" data-section="settings">
+                <i class="fas fa-cog mr-3"></i>
+                <span>Settings</span>
+            </li>
+            <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer" data-section="help">
+                <i class="fas fa-question-circle mr-3"></i>
+                <span>Help</span>
+            </li>
+            <li id="logout-button" class="flex items-center p-2 hover:bg-red-600 cursor-pointer">
+                <i class="fas fa-sign-out-alt mr-3"></i>
+                <span>Logout</span>
+            </li>
+        </ul>
     </div>
-    <ul>
-        <li><img src="images/home.png" alt=""> <span>Home</span></li>
-        <li><img src="images/user.png" alt=""><span>Profile</span></li>
-        <li><img src="images/Projects.png" alt=""><span>My Projects</span></li>
-        <li><img src="images/join.png" alt=""><span>Join Project</span></li>
-        <li><img src="images/donate.png" alt=""><span>Donations</span></li>
-        <li><img src="images/events.png" alt=""><span>Events</span></li>
-        <li><img src="images/initiate.png" alt=""><span>Initiate Project</span></li>
-        <li><img src="images/help.png" alt=""><span>Help</span></li>
-        <li><img src="images/settings.png" alt=""><span>Settings</span></li>
-    </ul>
-</div>
-<div class="container">
-<div class="header">
-<div class="nav">
-    <div class="search">
-       <input type="text" placeholder="Search...">
-       <button type="Submit"><img src="images/search.png" alt=""> </button>
-    </div>
-    <div class="user">
-    <a href="#" class="btn">Add New</a>
-    <img src="images/notify.png" alt="">
-    <div class="image-case">
-        <img src="images/user2.png" alt="">
-    </div>
-    </div>
-</div>
-</div>
-<div class="content">
-    <div class="cards">
-        <div class="card">
-            <div class="box">
-                <h1>34</h1>
-                <h3>Projects</h3>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+        <div class="flex justify-between items-center bg-gray-700 text-white p-4">
+            <div class="flex items-center">
+                <h2 id="section-title" class="text-2xl font-bold">Community Hub Dashboard</h2>
             </div>
-            <div class="proj">
-                <img src="images/project.png" alt="">
+            <button id="add-event-button" class="p-2 bg-purple-700 rounded text-white">Add New Event</button>
+        </div>
+
+        <div id="content-container" class="p-6 flex-1 overflow-y-auto space-y-6">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Event Detail Modal -->
+    <div id="event-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg relative">
+            <button id="close-modal" class="absolute top-2 right-2 text-gray-700 text-2xl">&times;</button>
+            <div id="event-details">
+                <!-- Event details will be dynamically inserted here -->
             </div>
         </div>
-        <div class="card">
-            <div class="box">
-                <h1>2</h1>
-                <h3>Events</h3>
-            </div>
-            <div class="proj">
-                <img src="images/events.png" alt="">
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <h1>543</h1>
-                <h3>Participants</h3>
-            </div>
-            <div class="proj">
-                <img src="images/participate.png" alt="">
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <h1>₱543,246</h1>
-                <h3>Of donations raised</h3>
-            </div>
-            <div class="proj">
-                <img src="images/donatee.png" alt="">
-            </div>
-        </div>
-       
-        <div class="content-2"></div>
-        <div class="projjoin"> 
-        <div class="title">
-        <h2> Join a Project</h2>
-        <a href="#" class="btn">View All</a>
-        </div>
-        <table>
-            <tr>
-                <th>Project</th>
-                <th>Location</th>
-                <th>Date</th>
-                <th>Option</th>
-            </tr>
-            <tr>
-                <td>Feeding Program</td>
-                <td>Marawoy Elementary School</td>
-                <td>October 21, 2024</td>
-                <td><a href="#" class="btn">View</a></td>
-            </tr>
-            <tr>
-                <td>Tree planting</td>
-                <td>Marawoy</td>
-                <td>October 24, 2024</td>
-                <td><a href="#" class="btn">View</a></td>
-            </tr>
-            <tr>
-                <td>Feeding Program</td>
-                <td>Marawoy Elementary School</td>
-                <td>October 21, 2024</td>
-                <td><a href="#" class="btn">View</a></td>
-            </tr>
-            <tr>
-                <td>Feeding Program</td>
-                <td>Marawoy Elementary School</td>
-                <td>October 21, 2024</td>
-                <td><a href="#" class="btn">View</a></td>
-            </tr>
-            <tr>
-                <td>Feeding Program</td>
-                <td>Marawoy Elementary School</td>
-                <td>October 21, 2024</td>
-                <td><a href="#" class="btn">View</a></td>
-            </tr>
-            <tr>
-                <td>Feeding Program</td>
-                <td>Marawoy Elementary School</td>
-                <td>October 21, 2024</td>
-                <td><a href="#" class="btn">View</a></td>
-            </tr>
-            <tr>
-                <td>Feeding Program</td>
-                <td>Marawoy Elementary School</td>
-                <td>October 21, 2024</td>
-                <td><a href="#" class="btn">View</a></td>
-            </tr>
-        </table>
-        
     </div>
-</div>
-</div>
+
+    <!-- Add Event Modal -->
+    <div id="add-event-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg relative">
+            <button id="close-add-event-modal" class="absolute top-2 right-2 text-gray-700 text-2xl">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">Add New Event</h2>
+            <form id="add-event-form">
+                <input type="text" id="event-name" placeholder="Event Name" class="w-full p-2 mb-4 border rounded" required />
+                <input type="text" id="event-location" placeholder="Location" class="w-full p-2 mb-4 border rounded" required />
+                <input type="date" id="event-date" class="w-full p-2 mb-4 border rounded" required />
+                <input type="text" id="event-img" placeholder="Image URL" class="w-full p-2 mb-4 border rounded" required />
+                <input type="number" id="event-expenses" placeholder="Expenses" class="w-full p-2 mb-4 border rounded" required />
+                <input type="number" id="funds-needed" placeholder="Funds Needed" class="w-full p-2 mb-4 border rounded" required />
+                <button type="submit" class="w-full p-3 bg-purple-700 text-white font-bold rounded">Add Event</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Initiate Project Modal -->
+    <div id="initiate-project-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg relative">
+            <button id="close-initiate-project-modal" class="absolute top-2 right-2 text-gray-700 text-2xl">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">Initiate New Project</h2>
+            <form id="initiate-project-form">
+                <input type="text" id="project-name" placeholder="Project Name" class="w-full p-2 mb-4 border rounded" required />
+                <textarea id="project-description" placeholder="Project Description" class="w-full p-2 mb-4 border rounded" required></textarea>
+                <select id="initiator-type" class="w-full p-2 mb-4 border rounded" required>
+                    <option value="" disabled selected>Select Initiator Type</option>
+                    <option value="individual">Individual</option>
+                    <option value="organization">Organization</option>
+                </select>
+                <button type="submit" class="w-full p-3 bg-purple-700 text-white font-bold rounded">Initiate Project</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
 </body>
+
 </html>
