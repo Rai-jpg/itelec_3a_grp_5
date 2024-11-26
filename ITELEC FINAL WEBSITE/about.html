@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-jost bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 min-h-screen flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 text-white flex flex-col p-4 h-screen">
+        <h1 class="text-2xl font-bold mb-6">Community Hub</h1>
+        <ul id="menu" class="w-full">
+            <a href="dashboard.php">
+                <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer">
+                    <i class="fas fa-home mr-3"></i>
+                    <span>Dashboard</span>
+                </li>
+            </a>
+            <a href="profile.php">
+                <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer">
+                    <i class="fas fa-user mr-3"></i>
+                    <span>Profile</span>
+                </li>
+            </a>
+            <a href="events.php">
+                <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer">
+                    <i class="fas fa-calendar-alt mr-3"></i>
+                    <span>Events</span>
+                </li>
+            </a>
+            <a href="about.php">
+                <li class="flex items-center p-2 hover:bg-gray-700 cursor-pointer">
+                    <i class="fas fa-question-circle mr-3"></i>
+                    <span>About Us</span>
+                </li>
+            </a>
+            <a href="logout.php">
+                <li id="logout-button" class="flex items-center p-2 hover:bg-red-600 cursor-pointer">
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Logout</span>
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex items-center justify-center">
+        <div class="about-con max-w-3x1">
+            <h2 class="text-3xl font-bold text-white mb-6">About Us</h2>
+            <p class="text-lg text-gray-200 mb-4">
+                Welcome to Bayanihan! We are dedicated to promoting local events, celebrations, and activities that bring our residents together and foster a sense of belonging.
+            </p>
+            <p class="text-lg text-gray-200 mb-4">
+                Our mission is to provide a comprehensive and accessible resource for all things related to barangay events. Whether it's feeding programs, community clean-up, sports tournaments, or cultural showcases, we strive to keep you informed and engaged.
+            </p>
+            <p class="text-lg text-gray-200 mb-4">
+                Together, we can celebrate our heritage, support local initiatives, and create lasting memories.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>
